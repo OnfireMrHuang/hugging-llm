@@ -1,7 +1,7 @@
 import unittest
 import os
 import numpy as np
-from embedding.embeding import Embedding
+from embedding.embeding import OpenAiEmbedding, compare_similarity
 
 
 class TestEmbedding(unittest.TestCase):
@@ -15,9 +15,19 @@ class TestEmbedding(unittest.TestCase):
         print(table)
 
     def test_openai_embedding(self):
-        emb = Embedding(os.environ.get("OPENAI_API_KEY"))
-        rsp = emb.request("我喜欢你")
+        emb = OpenAiEmbedding(os.environ.get("OPENAI_API_KEY"))
+        rsp = emb.get_embedding("我喜欢你")
         print("rsp: ")
         print(rsp)
 
+    def test_embedding_similarity(self):
+        emb = OpenAiEmbedding(os.environ.get("OPENAI_API_KEY"))
+        rsp1 = emb.get_embedding("我喜欢你")
+        rsp2 = emb.get_embedding("我爱你")
+        print("rsp1: ")
+        print(rsp1)
+        print("rsp2: ")
+        print(rsp2)
+        print("similarity: ")
+        print(compare_similarity(rsp1, rsp2))
 
