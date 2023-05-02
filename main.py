@@ -3,19 +3,19 @@
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-import embedding.embedding as embedding
+from embedding.clustering import Clustering
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+# if __name__ == '__main__':
+#     X = np.linspace(-np.pi, np.pi, 256, endpoint=True)
+#     C, S = np.cos(X), np.sin(X)
+#
+#     plt.plot(X, C)
+#     plt.plot(X, S)
+#
+#     plt.show()
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-    #加载embedding测试模块
-    embedding.test_embedding()
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    clustering = Clustering()
+    clustering.classification()
