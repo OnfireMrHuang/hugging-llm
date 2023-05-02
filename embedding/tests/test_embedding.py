@@ -9,8 +9,6 @@ class TestEmbedding(unittest.TestCase):
         qa = QA()
         sims = qa.inquire("Is Kaggle dead?")
         print(sims)
-        # sims = qa.batch_inquire(["What are some alternatives to Kaggle?", "How to use openai?"])
-        # print(sims)
 
 
 

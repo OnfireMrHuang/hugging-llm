@@ -41,7 +41,10 @@ class QA:
 
     def inquire(self, query: str):
         emb = get_embedding(query)
-        sims = [cosine_similarity(emb, v.get("embedding")) for v in self.vec_base]
+        arr = np.array([v.get("embedding") for v in self.vec_base])
+        q_arr = np.expand_dims(emb, 0)
+        sims = sk_cosine_similarity(arr, q_arr)
+        # sims = [cosine_similarity(emb, v.get("embedding")) for v in self.vec_base]
         index = 0
         for i, sim in enumerate(sims):
             if sim > sims[index]:
@@ -49,10 +52,4 @@ class QA:
         return self.vec_base[index]["answer"]
 
 
-    # def batch_inquire(self, query_list: list):
-    #     q_emb = [get_embedding(q) for q in query_list]
-    #     q_arr = np.expand_dims(q_emb, 0)
-    #     arr = np.array(
-    #         [v["embedding"] for v in self.vec_base]
-    #     )
-    #     return sk_cosine_similarity(arr, q_arr)
+
