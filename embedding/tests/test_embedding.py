@@ -1,5 +1,7 @@
 import unittest
+import os
 import numpy as np
+from embedding.embeding import Embedding
 
 
 class TestEmbedding(unittest.TestCase):
@@ -11,5 +13,11 @@ class TestEmbedding(unittest.TestCase):
         print(table.shape)
         print("table: ")
         print(table)
+
+    def test_openai_embedding(self):
+        emb = Embedding(os.environ.get("OPENAI_API_KEY"))
+        rsp = emb.request("我喜欢你")
+        print("rsp: ")
+        print(rsp)
 
 
