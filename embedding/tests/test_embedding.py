@@ -31,3 +31,9 @@ class TestEmbedding(unittest.TestCase):
         print("similarity: ")
         print(compare_similarity(rsp1, rsp2))
 
+    def test_openai_chat(self):
+        emb = OpenAiEmbedding(os.environ.get("OPENAI_API_KEY"))
+        rsp = emb.dialogue("你好")
+        print("rsp: ")
+        print(rsp)
+

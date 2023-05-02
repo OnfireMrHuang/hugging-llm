@@ -1,4 +1,6 @@
 import openai
+
+
 # from openai.embeddings_utils import cosine_similarity
 
 
@@ -23,4 +25,9 @@ class OpenAiEmbedding:
         emb = emb_req.data[0].embedding
         return emb
 
-
+    def dialogue(self, content):
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": content}]
+        )
+        return response.get("choices")[0].get("message").get("content")
